@@ -43,4 +43,5 @@ contract StackTest is Test {
         uint256 size = stack.size();
         assertEq(size, 4, "Expected size to be 4");
     }
+
 }

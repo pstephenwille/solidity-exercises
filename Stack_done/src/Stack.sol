@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.8.13;
+import "forge-std/Test.sol";
 
 contract Stack {
     /*
@@ -15,11 +16,36 @@ contract Stack {
             e. `getStack` function returns the stack.
     */
 
-    uint256[] stack;
+    uint256[] public stack;
 
     constructor(uint256[] memory _stack) {
         stack = _stack;
     }
 
     // your code here
+    function push(uint256 newInt) public returns(uint256[] memory) {
+        stack.push(newInt);
+        return stack;
+    }
+
+    function peek() public returns(uint256) {
+        require(stack.length != 0, "stack is empty");
+
+        return stack[stack.length -1];
+    }
+
+    function pop() public returns(uint) {
+        require(stack[stack.length -1] != 0, "stack is empty");
+        uint foo = stack[stack.length -1];
+        stack.pop();
+
+        return foo;
+    }
+
+    function size() public returns(uint256){
+        return stack.length;
+    }
+    function getStack() public returns(uint256[] memory) {
+        return stack;
+    }
 }
